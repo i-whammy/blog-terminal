@@ -13,8 +13,8 @@ export class ArticlePresenter extends ArticleDisplayPort {
         this.articleState.articles = articles.articles.map(article => {
             return {
                 title: article.title.value,
-                publishDate: "",
-                companyName: "",
+                publishDate: article.publishDate.toFormattedDate(),
+                companyName: article.companyName.value,
             }
         })
     }
