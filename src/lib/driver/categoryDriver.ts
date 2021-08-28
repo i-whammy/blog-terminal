@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Categories, Category } from "../domain/category";
+import { Categories, Category, CategoryId, CategoryName } from "../domain/category";
 import { CategoryPort } from "../port/categoryPort";
 
 type CategoryEntity = {
+    id: String,
     name: String,
 }
 
@@ -10,11 +11,13 @@ type CategoryEntity = {
 export class CategoryDriver extends CategoryPort {
     fetch(): Categories {
         const categories: CategoryEntity[] = [
-            { name: "Github" },
-            { name: "iOS" },
-            { name: "Selenium" },
+            { id: "github", name: "Github" },
+            { id: "ios", name: "iOS" },
+            { id: "selenium", name: "Selenium" },
         ]
-        return new Categories(categories.map(c => new Category(c.name)))
+        return new Categories(categories.map(c => new Category(
+            new CategoryId(c.id),
+            new CategoryName(c.name))))
     }
 
 }

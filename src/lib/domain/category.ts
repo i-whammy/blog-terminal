@@ -6,8 +6,24 @@ export class Categories {
 }
 
 export class Category {
-    name: String
-    constructor(name: String) {
+    id: CategoryId
+    name: CategoryName
+    constructor(id: CategoryId, name: CategoryName) {
+        this.id = id
         this.name = name
+    }
+}
+
+export class CategoryId {
+    value: String
+    constructor(value: String) {
+        this.value = value
+    }
+}
+
+export class CategoryName {
+    value: String
+    constructor(value: String) {
+        this.value = value;
     }
 }
