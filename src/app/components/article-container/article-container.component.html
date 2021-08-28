@@ -1,7 +1,7 @@
 <div class="article-container">
     <div class="article" *ngFor="let article of articles">
       <div class="title">
-        {{article.title}}
+        <a class="url" href="{{article.url}}" target="_blank">{{article.title}}</a>
       </div>
       <div class="attributes">
         <div class="publish-date">

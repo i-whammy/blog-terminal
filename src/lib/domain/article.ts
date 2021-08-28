@@ -11,11 +11,13 @@ export class Article {
     title: Title
     publishDate: PublishDate
     companyName: CompanyName
+    url: URL
 
-    constructor(title: Title, publishDate: PublishDate, companyName: CompanyName) {
+    constructor(title: Title, publishDate: PublishDate, companyName: CompanyName, url: URL) {
         this.title = title
         this.publishDate = publishDate
         this.companyName = companyName
+        this.url = url
     }
 }
 
@@ -41,5 +43,12 @@ export class CompanyName {
     value: String
     constructor(value: String) {
         this.value = value;
+    }
+}
+
+export class URL {
+    value: String
+    constructor(value: String) {
+        this.value = value
     }
 }

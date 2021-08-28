@@ -4,6 +4,7 @@ export type Article = {
     title: String,
     publishDate: String,
     companyName: String,
+    url: String,
 }
 
 @Injectable()
