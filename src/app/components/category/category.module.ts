@@ -7,6 +7,7 @@ import { CategoryPort } from 'src/lib/port/categoryPort';
 import { CategoryPresenter } from 'src/lib/presenter/categoryPresenter';
 import { CategoryDisplayPort } from 'src/lib/port/categoryDisplayPort';
 import { CategoryState } from 'src/lib/state/categoryState';
+import { ArticleModule } from '../article/article.module';
 
 
 
@@ -15,7 +16,8 @@ import { CategoryState } from 'src/lib/state/categoryState';
     CategoryComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ArticleModule,
   ],
   exports: [
     CategoryComponent,

@@ -3,11 +3,11 @@ import { Article, ArticleState } from 'src/lib/state/articleState';
 import { ArticleUsecase } from 'src/lib/usecase/articleUsecase';
 
 @Component({
-  selector: 'app-article-container',
-  templateUrl: './article-container.component.html',
-  styleUrls: ['./article-container.component.scss']
+  selector: 'app-article',
+  templateUrl: './article.component.html',
+  styleUrls: ['./article.component.scss']
 })
-export class ArticleContainerComponent implements OnInit {
+export class ArticleComponent implements OnInit {
 
   constructor(
     private articleUsecase: ArticleUsecase,

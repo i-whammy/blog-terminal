@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ArticleContainerModule } from './components/article-container/article-container.module';
+import { ArticleModule } from './components/article/article.module';
 import { CategoryModule } from './components/category/category.module';
 
 @NgModule({
@@ -11,7 +11,7 @@ import { CategoryModule } from './components/category/category.module';
   ],
   imports: [
     BrowserModule,
-    ArticleContainerModule,
+    ArticleModule,
     CategoryModule,
   ],
   providers: [],

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArticleContainerComponent } from './article-container.component';
+import { ArticleComponent } from './article.component';
 import { ArticleUsecase } from 'src/lib/usecase/articleUsecase';
 import { ArticleDriver } from 'src/lib/driver/articleDriver';
 import { ArticlePresenter } from 'src/lib/presenter/articlePresenter';
@@ -10,13 +10,13 @@ import { ArticleState } from 'src/lib/state/articleState';
 
 @NgModule({
   declarations: [
-    ArticleContainerComponent
+    ArticleComponent
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    ArticleContainerComponent,
+    ArticleComponent,
   ],
   providers: [
     ArticleUsecase,
@@ -25,4 +25,4 @@ import { ArticleState } from 'src/lib/state/articleState';
     ArticleState,
   ]
 })
-export class ArticleContainerModule { }
+export class ArticleModule { }
