@@ -3,8 +3,12 @@ import { Injectable } from "@angular/core"
 export type Article = {
     title: String,
     publishDate: String,
-    companyName: String,
+    company: Company,
     url: String,
+}
+
+export type Company = {
+    name: String,
 }
 
 @Injectable()
@@ -21,6 +25,10 @@ export class ArticleState {
 
     get articles(): Article[] {
         return this.value;
+    }
+
+    get companies(): Company[] {
+        return this.value.map(a => a.company)
     }
 }
 

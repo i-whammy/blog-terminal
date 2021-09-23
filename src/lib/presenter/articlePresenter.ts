@@ -14,7 +14,9 @@ export class ArticlePresenter extends ArticleDisplayPort {
             return {
                 title: article.title.value,
                 publishDate: article.publishDate.toFormattedDate(),
-                companyName: article.companyName.value,
+                company: {
+                    name: article.company.name.value
+                },
                 url: article.url.value,
             }
         })

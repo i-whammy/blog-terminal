@@ -1,22 +1,31 @@
 import { format } from 'date-fns'
+import { AggregatedCompanies, AggregatedCompany, Company } from './company'
 
 export class Articles {
     articles: Article[]
     constructor(articles: Article[]) {
         this.articles = articles
     }
+
+    toAggregatedCompanies(): AggregatedCompanies {
+        const map = this.articles.reduce((acc, article) => {
+            return acc.set(article.company.name,  acc.get(article.company.name) + 1)
+        }, new Map())
+
+        return new AggregatedCompanies([])
+    }
 }
 
 export class Article {
     title: Title
     publishDate: PublishDate
-    companyName: CompanyName
+    company: Company
     url: URL
 
-    constructor(title: Title, publishDate: PublishDate, companyName: CompanyName, url: URL) {
+    constructor(title: Title, publishDate: PublishDate, company: Company, url: URL) {
         this.title = title
         this.publishDate = publishDate
-        this.companyName = companyName
+        this.company = company
         this.url = url
     }
 }
@@ -36,13 +45,6 @@ export class PublishDate {
 
     toFormattedDate(): String {
         return format(this.value, 'yyyy-MM-dd')
-    }
-}
-
-export class CompanyName {
-    value: String
-    constructor(value: String) {
-        this.value = value;
     }
 }
 

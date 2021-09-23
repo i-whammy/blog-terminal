@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Article, Articles, CompanyName, PublishDate, Title, URL } from "../domain/article";
+import { Article, Articles, PublishDate, Title, URL } from "../domain/article";
 import { CategoryId } from "../domain/category";
+import { Company, CompanyName } from "../domain/company";
 import { ArticlePort } from "../port/articlePort";
 
 type ArticleEntity = {
@@ -18,6 +19,27 @@ type CategoryEntity = {
 
 @Injectable()
 export class ArticleDriver extends ArticlePort {
+
+    fetch(): Articles {
+        return new Articles(this.articles.map(a => this.toArticle(a)))
+    }
+
+    fetchBy(categoryId: CategoryId): Articles {
+        const articleEntities = this.articles.filter(a => a.category.some(c => c.id == categoryId.value))
+        return new Articles(articleEntities.map(a => this.toArticle(a)))
+    }
+
+    private toArticle(articleEntity: ArticleEntity): Article {
+        return new Article(
+            new Title(articleEntity.title),
+            new PublishDate(articleEntity.publishDate),
+            new Company(
+                new CompanyName(articleEntity.companyName),
+            ),
+            new URL(articleEntity.url)
+        )
+    }
+
     private articles: ArticleEntity[] = [
         {
             title: "フロントの動作確認用の環境をGithub Actionsで自動構築してみた",
@@ -56,22 +78,4 @@ export class ArticleDriver extends ArticlePort {
             ],
         },
     ]
-
-    fetch(): Articles {
-        return new Articles(this.articles.map(a => this.toArticle(a)))
-    }
-
-    fetchBy(categoryId: CategoryId): Articles {
-        const articleEntities = this.articles.filter(a => a.category.some(c => c.id == categoryId.value))
-        return new Articles(articleEntities.map(a => this.toArticle(a)))
-    }
-
-    private toArticle(articleEntity: ArticleEntity): Article {
-        return new Article(
-            new Title(articleEntity.title),
-            new PublishDate(articleEntity.publishDate),
-            new CompanyName(articleEntity.companyName),
-            new URL(articleEntity.url)
-        )
-    }
 }
