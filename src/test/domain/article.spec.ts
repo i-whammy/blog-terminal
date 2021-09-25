@@ -36,4 +36,61 @@ describe('Articles', () => {
 
         expect(articles.toAggregatedCompanies()).toEqual(expected)
     })
+    test('更新日の降順でソートされた記事の集合を返す', () => {
+
+        const articles = new Articles([
+            new Article(
+                new Title("記事A"),
+                new PublishDate(new Date("2021-02-01")),
+                new Company(
+                    new CompanyName("A")
+                ),
+                new URL("http://example.com/A")
+            ),
+            new Article(
+                new Title("記事B"),
+                new PublishDate(new Date("2021-03-01")),
+                new Company(
+                    new CompanyName("B")
+                ),
+                new URL("http://example.com/B")
+            ),
+            new Article(
+                new Title("記事C"),
+                new PublishDate(new Date("2021-01-01")),
+                new Company(
+                    new CompanyName("C")
+                ),
+                new URL("http://example.com/C")
+            ),
+        ])
+        const expected = new Articles([
+            new Article(
+                new Title("記事B"),
+                new PublishDate(new Date("2021-03-01")),
+                new Company(
+                    new CompanyName("B")
+                ),
+                new URL("http://example.com/B")
+            ),
+            new Article(
+                new Title("記事A"),
+                new PublishDate(new Date("2021-02-01")),
+                new Company(
+                    new CompanyName("A")
+                ),
+                new URL("http://example.com/A")
+            ),
+            new Article(
+                new Title("記事C"),
+                new PublishDate(new Date("2021-01-01")),
+                new Company(
+                    new CompanyName("C")
+                ),
+                new URL("http://example.com/C")
+            ),
+        ])
+
+        expect(articles.sortByPublishDateDescending()).toEqual(expected)
+    })
 })

@@ -77,5 +77,74 @@ export class ArticleDriver extends ArticlePort {
                 },
             ],
         },
+        {
+            title: "プロダクト開発組織のチームビジョンを作ったらすごいパワーが生まれた話",
+            publishDate: new Date("2021-08-19"),
+            companyName: "株式会社ユーザベース",
+            url: "https://tech.uzabase.com/entry/2021/08/19/195850",
+            category: [
+                {
+                    id: "organization",
+                    name: "組織",
+                },
+                {
+                    id: "culture",
+                    name: "カルチャー",
+                },
+            ],
+        },
+        {
+            title: "NewsPicksのサーバーサイド言語をJavaからKotlinに切り替えるために",
+            publishDate: new Date("2021-09-15"),
+            companyName: "株式会社ユーザベース",
+            url: "https://tech.uzabase.com/entry/2021/09/15/154445",
+            category: [
+                {
+                    id: "kotlin",
+                    name: "Kotlin",
+                },
+            ],
+        },
+        {
+            title: "#37 エンジニア視点から見たUbieのアクセシビリティ with @empitsu88",
+            publishDate: new Date("2021-09-22"),
+            companyName: "株式会社Ubie",
+            url: "https://anchor.fm/devchat-fm/episodes/37-Ubie-with-empitsu88-e17mth0",
+            category: [
+                {
+                    id: "accessibility",
+                    name: "アクセシビリティ",
+                },
+            ],
+        },
+        {
+            title: "Perfettoを用いたAndroidアプリのボトルネックの特定とその改善",
+            publishDate: new Date("2021-09-17"),
+            companyName: "株式会社ZOZOテクノロジーズ",
+            url: "https://techblog.zozo.com/entry/android-performance-improvement-with-perfetto",
+            category: [
+                {
+                    id: "kotlin",
+                    name: "Kotlin",
+                },
+                {
+                    id: "android",
+                    name: "Android",
+                },
+
+            ],
+        },
+        {
+            title: "Kotlinのsuspend関数のバイトコードを読んでみた",
+            publishDate: new Date("2021-01-28"),
+            companyName: "株式会社ZOZOテクノロジーズ",
+            url: "https://techblog.zozo.com/entry/kotlin-suspend-functions",
+            category: [
+                {
+                    id: "kotlin",
+                    name: "Kotlin",
+                },
+            ],
+        },        
     ]
 }
