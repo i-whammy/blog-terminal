@@ -3,8 +3,6 @@
  * https://jestjs.io/docs/configuration
  */
 
-require('jest-preset-angular/ngcc-jest-processor')
-
 module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
