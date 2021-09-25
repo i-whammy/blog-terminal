@@ -1,5 +1,5 @@
-import { Companies } from "../domain/company";
+import { AggregatedCompanies } from "../domain/company";
 
-export abstract class CompanyDisplayPort {
-    abstract store(companies: Companies): void
+export abstract class AggregatedCompanyDisplayPort {
+    abstract store(companies: AggregatedCompanies): void
 }

@@ -27,10 +27,10 @@ export class AggregatedCompanies {
 }
 
 export class AggregatedCompany {
-    company: Company
+    companyName: String
     articleCount: Number
-    constructor(company: Company, articleCount: Number) {
-        this.company = company
+    constructor(companyName: String, articleCount: Number) {
+        this.companyName = companyName
         this.articleCount = articleCount
     }
 }

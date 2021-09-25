@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ArticleModule } from './components/article/article.module';
 import { CategoryModule } from './components/category/category.module';
-import { CompanyModule } from './components/company/company.module';
+import { AggregatedCompanyModule } from './components/aggregated-company/aggregated-company.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { CompanyModule } from './components/company/company.module';
     BrowserModule,
     ArticleModule,
     CategoryModule,
-    CompanyModule,
+    AggregatedCompanyModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

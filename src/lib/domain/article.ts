@@ -9,10 +9,12 @@ export class Articles {
 
     toAggregatedCompanies(): AggregatedCompanies {
         const map = this.articles.reduce((acc, article) => {
-            return acc.set(article.company.name,  acc.get(article.company.name) + 1)
+            return acc.set(article.company.name.value,  this.articles.filter(a => a.company.name.value == article.company.name.value).length)
         }, new Map())
-
-        return new AggregatedCompanies([])
+        const companies = Array.from(map, ([k,v]) => ({k,v})).map(e => {
+            return new AggregatedCompany(e.k, e.v)
+        })
+        return new AggregatedCompanies(companies)
     }
 }
 
