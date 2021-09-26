@@ -1,4 +1,4 @@
-import { format, getUnixTime } from 'date-fns'
+import { format, getUnixTime, parse } from 'date-fns'
 import { AggregatedCompanies, AggregatedCompany, Company } from './company'
 
 export class Articles {
@@ -19,6 +19,10 @@ export class Articles {
 
     sortByPublishDateDescending(): Articles {
         return new Articles(this.articles.sort((a,b) => getUnixTime(b.publishDate.value) - getUnixTime(a.publishDate.value)))
+    }
+
+    concat(yetArticles: Articles): Articles {
+        return new Articles(this.articles.concat(yetArticles.articles))
     }
 }
 
@@ -51,6 +55,10 @@ export class PublishDate {
 
     toFormattedDate(): String {
         return format(this.value, 'yyyy-MM-dd')
+    }
+
+    static of(value: String): PublishDate {
+        return new PublishDate(parse(value.toString(), 'yyyy-MM-dd', new Date()))
     }
 }
 

@@ -17,8 +17,21 @@ export class ArticleUsecase {
         this.storeArticles(articles)
     }
 
+    fetchLatestArticlesFrom(startIndex: number, count: number) {
+        console.log(startIndex)
+        const articles = this.articlePort.fetch(startIndex, count)
+        console.log(articles)
+        this.addArticles(articles)
+    }
+
     storeArticles(articles: Articles) {
         this.articleDisplayPort.store(articles)
-        this.aggregatedCompanyDisplayPort.store(articles.toAggregatedCompanies())        
+        this.aggregatedCompanyDisplayPort.store(articles.toAggregatedCompanies())
+    }
+
+    addArticles(articles: Articles) {
+        this.articleDisplayPort.add(articles)
+        const existingArticles = this.articleDisplayPort.get()
+        this.aggregatedCompanyDisplayPort.store(existingArticles.concat(articles).toAggregatedCompanies())
     }
 }

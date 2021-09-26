@@ -21,4 +21,8 @@ export class ArticleComponent implements OnInit {
   get articles(): Article[] {
     return this.articleState.articles;
   }
+
+  onClickMore(): void {
+    this.articleUsecase.fetchLatestArticlesFrom(this.articleState.articles.length, 5)
+  }
 }
