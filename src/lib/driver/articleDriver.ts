@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { getUnixTime } from "date-fns";
 import { Article, Articles, PublishDate, Title, URL } from "../domain/article";
 import { CategoryId } from "../domain/category";
 import { Company, CompanyName } from "../domain/company";
@@ -20,8 +21,10 @@ type CategoryEntity = {
 @Injectable()
 export class ArticleDriver extends ArticlePort {
 
-    fetch(): Articles {
-        return new Articles(this.articles.map(a => this.toArticle(a)))
+    fetch(startIndex: number, count: number): Articles {
+        return new Articles(this.articles.map(a => this.toArticle(a))
+        .sort((a,b) => { return getUnixTime(b.publishDate.value) - getUnixTime(a.publishDate.value)})
+        .slice(startIndex, startIndex + count))
     }
 
     fetchBy(categoryId: CategoryId): Articles {

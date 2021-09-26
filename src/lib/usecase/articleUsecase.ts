@@ -12,9 +12,9 @@ export class ArticleUsecase {
         private aggregatedCompanyDisplayPort: AggregatedCompanyDisplayPort,
     ) {}
 
-    fetch() {
-        const articles = this.articlePort.fetch()
-        this.storeArticles(articles.sortByPublishDateDescending())
+    fetchLatestArticles(count: number) {
+        const articles = this.articlePort.fetch(0, count)
+        this.storeArticles(articles)
     }
 
     storeArticles(articles: Articles) {

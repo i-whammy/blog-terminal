@@ -9,23 +9,18 @@ describe('ArticleUsecase', () => {
     test('最初の5件記事を取得して、表示用のPortに保存する', () => {
         const articlePort = {} as ArticlePort
         const articles = {} as Articles
-        const sortedArticles = {} as Articles
         const articleDisplayPort = {} as ArticleDisplayPort
         const aggregatedCompanyDisplayPort = {} as AggregatedCompanyDisplayPort
         const articleUsecase = new ArticleUsecase(articlePort, articleDisplayPort, aggregatedCompanyDisplayPort)
 
         const fetch = jest.fn()
         articlePort.fetch = fetch
-        when(fetch).mockReturnValue(articles)
-
-        const sortByPublishDateDescending = jest.fn()
-        articles.sortByPublishDateDescending = sortByPublishDateDescending
-        when(sortByPublishDateDescending).mockReturnValue(sortedArticles)
+        when(fetch).calledWith(0,5).mockReturnValue(articles)
 
         const storeArticles = jest.fn()
         articleUsecase.storeArticles = storeArticles
-        when(sortByPublishDateDescending).expectCalledWith(sortedArticles)
+        when(storeArticles).expectCalledWith(articles)
 
-        articleUsecase.fetch()
+        articleUsecase.fetchLatestArticles(5)
     })
 })

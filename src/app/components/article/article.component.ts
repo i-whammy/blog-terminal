@@ -15,7 +15,7 @@ export class ArticleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.articleUsecase.fetch()
+    this.articleUsecase.fetchLatestArticles(5)
   }
 
   get articles(): Article[] {
