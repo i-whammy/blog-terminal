@@ -17,8 +17,34 @@ export class CategoryDriver extends CategoryPort {
             { id: "organization", name: "組織" },
             { id: "culture", name: "文化" },
             { id: "kotlin", name: "Kotlin" },
-            { id: "accessibility", name: "アクセシビリティ"},
-            { id: "android", name: "Android"},
+            { id: "accessibility", name: "アクセシビリティ" },
+            { id: "android", name: "Android" },
+            {
+                id: "authentication",
+                name: "認証"
+            },
+            {
+                id: "appium",
+                name: "Appium"
+            },
+            {
+                id: "microservices",
+                name: "マイクロサービス"
+            },
+            {
+                id: "protocolbuffers",
+                name: "Protocol Buffers"
+            },
+            {
+                id: "autotest",
+                name: "自動テスト"
+            },
+            {
+                id: "qa",
+                name: "品質保証"
+            },
+            { id: "bert", name: "BERT" },
+            { id: "rlang", name: "R" },
         ]
         return new Categories(categories.map(c => new Category(
             new CategoryId(c.id),

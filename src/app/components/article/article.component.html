@@ -1,4 +1,4 @@
-<div class="article-container">
+<div class="article-container" (scroll)='onScroll($event)'>
     <div class="article" *ngFor="let article of articles">
       <div class="title">
         <a class="url" href="{{article.url}}" target="_blank">{{article.title}}</a>
@@ -12,5 +12,4 @@
         </div>
       </div>
     </div>
-    <div class='more-button' (click)='onClickMore()'>More ...</div>
   </div>

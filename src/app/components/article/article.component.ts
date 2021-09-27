@@ -15,14 +15,21 @@ export class ArticleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.articleUsecase.fetchLatestArticles(5)
+    this.articleUsecase.fetchLatestArticles(20)
   }
 
   get articles(): Article[] {
     return this.articleState.articles;
   }
 
-  onClickMore(): void {
-    this.articleUsecase.fetchLatestArticlesFrom(this.articleState.articles.length, 5)
+  get willShowMoreButton(): boolean {
+    return this.articles.length < 5;
+  }
+
+  onScroll(event: any) {
+    const isScrolledToBottom = event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight
+    if (isScrolledToBottom) {
+      this.articleUsecase.fetchLatestArticlesFrom(this.articles.length, 5)
+    }
   }
 }
