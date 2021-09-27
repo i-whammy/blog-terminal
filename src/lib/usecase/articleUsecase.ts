@@ -18,6 +18,7 @@ export class ArticleUsecase {
     }
 
     fetchLatestArticlesFrom(startIndex: number, count: number) {
+        console.log(startIndex + 'was the index')
         const articles = this.articlePort.fetch(startIndex, count)
         this.addArticles(articles)
     }
@@ -28,8 +29,8 @@ export class ArticleUsecase {
     }
 
     addArticles(articles: Articles) {
-        this.articleDisplayPort.add(articles)
         const existingArticles = this.articleDisplayPort.get()
+        this.articleDisplayPort.add(articles)
         this.aggregatedCompanyDisplayPort.store(existingArticles.concat(articles).toAggregatedCompanies())
     }
 }
