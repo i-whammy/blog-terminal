@@ -2007,6 +2007,13 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
+angular-debounce-throttle@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/angular-debounce-throttle/-/angular-debounce-throttle-1.0.0.tgz#ab4f991a647d982dd79080d1c110885718454df8"
+  integrity sha512-sgAIbfT9BDWlM37b6HybXiRVuD+k/a7kaBE0PNnC/faZcrkE6q5XoBEGjulsLgLuhl1cljXxZAIa4OEzHgShtw==
+  dependencies:
+    tslib "^1.10.0"
+
 ansi-colors@4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"

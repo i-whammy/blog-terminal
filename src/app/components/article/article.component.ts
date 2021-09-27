@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Throttle } from 'angular-debounce-throttle';
 import { Article, ArticleState } from 'src/lib/state/articleState';
 import { ArticleUsecase } from 'src/lib/usecase/articleUsecase';
 
@@ -26,6 +27,7 @@ export class ArticleComponent implements OnInit {
     return this.articles.length < 5;
   }
 
+  @Throttle(500)
   onScroll(event: any) {
     const isScrolledToBottom = event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight
     if (isScrolledToBottom) {
