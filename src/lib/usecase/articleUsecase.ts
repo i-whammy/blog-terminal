@@ -18,9 +18,7 @@ export class ArticleUsecase {
     }
 
     fetchLatestArticlesFrom(startIndex: number, count: number) {
-        console.log(startIndex)
         const articles = this.articlePort.fetch(startIndex, count)
-        console.log(articles)
         this.addArticles(articles)
     }
 
