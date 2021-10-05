@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryId } from 'src/lib/domain/category';
 import { Category, CategoryState } from 'src/lib/state/categoryState';
 import { CategoryUsecase } from 'src/lib/usecase/categoryUsecase';
 
@@ -23,9 +22,7 @@ export class CategoryComponent implements OnInit {
     return this.categoryState.categories
   }
 
-  onClick(categoryId: String) {
-    this.categoryUsecase.select(
-      new CategoryId(categoryId)
-    )
+  onClick(categoryId: string) {
+    this.categoryUsecase.select(categoryId)
   }
 }

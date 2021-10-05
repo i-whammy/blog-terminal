@@ -29,8 +29,12 @@ export class ArticleComponent implements OnInit {
 
   @Throttle(500)
   onScroll(event: any) {
-    const isScrolledToBottom = event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight
+    // console.log('scrol client height ' + event.target.clientHeight)
+    // console.log('scrol top ' + event.target.scrollTop)
+    // console.log('scrol height ' + event.target.scrollHeight)
+    const isScrolledToBottom = event.target.clientHeight + event.target.scrollTop >= event.target.scrollHeight
     if (isScrolledToBottom) {
+      // console.log('fire!!!')
       this.articleUsecase.fetchLatestArticlesFrom(this.articles.length, 5)
     }
   }

@@ -18,7 +18,6 @@ export class ArticleUsecase {
     }
 
     fetchLatestArticlesFrom(startIndex: number, count: number) {
-        console.log(startIndex + 'was the index')
         const articles = this.articlePort.fetch(startIndex, count)
         this.addArticles(articles)
     }

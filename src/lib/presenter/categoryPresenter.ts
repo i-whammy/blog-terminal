@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Categories, CategoryId } from "../domain/category";
+import { Categories, } from "../domain/category";
 import { CategoryDisplayPort } from "../port/categoryDisplayPort";
 import { CategoryState } from "../state/categoryState";
 
@@ -12,10 +12,10 @@ export class CategoryPresenter extends CategoryDisplayPort {
     }
 
     store(categories: Categories) {
-        this.categoryState.categories = categories.categories.map(c => { return { id: c.id.value, name: c.name.value, selected: false }})
+        this.categoryState.categories = categories.categories.map(c => { return { id: c.id, name: c.name, selected: false }})
     }
 
-    select(categoryId: CategoryId) {
-        this.categoryState.select(categoryId.value)
+    select(categoryId: string) {
+        this.categoryState.select(categoryId)
     }
 }

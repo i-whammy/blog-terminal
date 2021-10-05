@@ -1,32 +1,26 @@
-import { Article, Articles, PublishDate, Title, URL } from "src/lib/domain/article"
-import { AggregatedCompanies, AggregatedCompany, Company, CompanyName } from "src/lib/domain/company"
+import { Article, Articles, PublishDate } from "src/lib/domain/article"
+import { AggregatedCompanies, AggregatedCompany, Company, } from "src/lib/domain/company"
 
 describe('Articles', () => {
     test('記事の集合から集約された企業の集合を作る', () => {
         const articles = new Articles([
             new Article(
-                new Title("any"),
+                "title A",
                 new PublishDate(new Date()),
-                new Company(
-                    new CompanyName("A")
-                ),
-                new URL("")
+                new Company("A"),
+                "http://example.net/A",
             ),
             new Article(
-                new Title("any2"),
+                "title B",
                 new PublishDate(new Date()),
-                new Company(
-                    new CompanyName("B")
-                ),
-                new URL("")
+                new Company("B"),
+                "http://example.net/B",
             ),
             new Article(
-                new Title("any3"),
+                "title C",
                 new PublishDate(new Date()),
-                new Company(
-                    new CompanyName("A")
-                ),
-                new URL("")
+                new Company("A"),
+                "http://example.net/C",
             ),
         ])
         const expected = new AggregatedCompanies([
@@ -40,54 +34,42 @@ describe('Articles', () => {
 
         const articles = new Articles([
             new Article(
-                new Title("記事A"),
+                "記事A",
                 new PublishDate(new Date("2021-02-01")),
-                new Company(
-                    new CompanyName("A")
-                ),
-                new URL("http://example.com/A")
+                new Company("A"),
+                "http://example.com/A",
             ),
             new Article(
-                new Title("記事B"),
+                "記事B",
                 new PublishDate(new Date("2021-03-01")),
-                new Company(
-                    new CompanyName("B")
-                ),
-                new URL("http://example.com/B")
+                new Company("B"),
+                "http://example.com/B",
             ),
             new Article(
-                new Title("記事C"),
+                "記事C",
                 new PublishDate(new Date("2021-01-01")),
-                new Company(
-                    new CompanyName("C")
-                ),
-                new URL("http://example.com/C")
+                new Company("C"),
+                "http://example.com/C",
             ),
         ])
         const expected = new Articles([
             new Article(
-                new Title("記事B"),
+                "記事B",
                 new PublishDate(new Date("2021-03-01")),
-                new Company(
-                    new CompanyName("B")
-                ),
-                new URL("http://example.com/B")
+                new Company("B"),
+                "http://example.com/B",
             ),
             new Article(
-                new Title("記事A"),
+                "記事A",
                 new PublishDate(new Date("2021-02-01")),
-                new Company(
-                    new CompanyName("A")
-                ),
-                new URL("http://example.com/A")
+                new Company("A"),
+                "http://example.com/A",
             ),
             new Article(
-                new Title("記事C"),
+                "記事C",
                 new PublishDate(new Date("2021-01-01")),
-                new Company(
-                    new CompanyName("C")
-                ),
-                new URL("http://example.com/C")
+                new Company("C"),
+                "http://example.com/C",
             ),
         ])
 

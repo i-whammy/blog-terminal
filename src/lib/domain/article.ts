@@ -9,7 +9,7 @@ export class Articles {
 
     toAggregatedCompanies(): AggregatedCompanies {
         const map = this.articles.reduce((acc, article) => {
-            return acc.set(article.company.name.value,  this.articles.filter(a => a.company.name.value == article.company.name.value).length)
+            return acc.set(article.company.name,  this.articles.filter(a => a.company.name == article.company.name).length)
         }, new Map())
         const companies = Array.from(map, ([k,v]) => ({k,v})).map(e => {
             return new AggregatedCompany(e.k, e.v)
@@ -27,23 +27,16 @@ export class Articles {
 }
 
 export class Article {
-    title: Title
+    title: string
     publishDate: PublishDate
     company: Company
-    url: URL
+    url: string
 
-    constructor(title: Title, publishDate: PublishDate, company: Company, url: URL) {
+    constructor(title: string, publishDate: PublishDate, company: Company, url: string) {
         this.title = title
         this.publishDate = publishDate
         this.company = company
         this.url = url
-    }
-}
-
-export class Title {
-    value: String
-    constructor(value: String) {
-        this.value = value
     }
 }
 
@@ -53,18 +46,11 @@ export class PublishDate {
         this.value = value
     }
 
-    toFormattedDate(): String {
+    toFormattedDate(): string {
         return format(this.value, 'yyyy-MM-dd')
     }
 
-    static of(value: String): PublishDate {
+    static of(value: string): PublishDate {
         return new PublishDate(parse(value.toString(), 'yyyy-MM-dd', new Date()))
-    }
-}
-
-export class URL {
-    value: String
-    constructor(value: String) {
-        this.value = value
     }
 }

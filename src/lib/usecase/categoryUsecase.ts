@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { CategoryId } from "../domain/category";
 import { ArticlePort } from "../port/articlePort";
 import { CategoryDisplayPort } from "../port/categoryDisplayPort";
 import { CategoryPort } from "../port/categoryPort";
@@ -19,7 +18,7 @@ export class CategoryUsecase {
         this.categoryDisplayPort.store(categories)
     }
 
-    select(categoryId: CategoryId) {
+    select(categoryId: string) {
         this.categoryDisplayPort.select(categoryId)
         const articles = this.articlePort.fetchBy(categoryId)
         this.articleUsecase.storeArticles(articles.sortByPublishDateDescending())

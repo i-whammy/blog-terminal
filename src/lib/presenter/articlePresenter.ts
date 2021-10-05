@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Article, Articles, PublishDate, Title, URL } from "../domain/article";
-import { Company, CompanyName } from "../domain/company";
+import { Article, Articles, PublishDate, } from "../domain/article";
+import { Company, } from "../domain/company";
 import { ArticleDisplayPort } from "../port/articleDisplayPort";
 import { ArticleState } from "../state/articleState";
 
@@ -13,24 +13,22 @@ export class ArticlePresenter extends ArticleDisplayPort {
     add(articles: Articles): void {
         this.articleState.articles = this.articleState.articles.concat(articles.articles.map(article => {
             return {
-                title: article.title.value,
+                title: article.title,
                 publishDate: article.publishDate.toFormattedDate(),
                 company: {
-                    name: article.company.name.value
+                    name: article.company.name
                 },
-                url: article.url.value,
+                url: article.url,
             }
         }))
     }
 
     get(): Articles {
         const articles = this.articleState.articles.map(article => new Article(
-            new Title(article.title),
+            article.title,
             PublishDate.of(article.publishDate),
-            new Company(
-                new CompanyName(article.company.name)
-            ),
-            new URL(article.url)
+            new Company(article.company.name),
+            article.url
         ))
         return new Articles(articles)
     }
@@ -38,12 +36,12 @@ export class ArticlePresenter extends ArticleDisplayPort {
     store(articles: Articles) {
         this.articleState.articles = articles.articles.map(article => {
             return {
-                title: article.title.value,
+                title: article.title,
                 publishDate: article.publishDate.toFormattedDate(),
                 company: {
-                    name: article.company.name.value
+                    name: article.company.name
                 },
-                url: article.url.value,
+                url: article.url,
             }
         })
     }

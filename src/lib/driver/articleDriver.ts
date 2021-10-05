@@ -1,21 +1,20 @@
 import { Injectable } from "@angular/core";
 import { getUnixTime } from "date-fns";
-import { Article, Articles, PublishDate, Title, URL } from "../domain/article";
-import { CategoryId } from "../domain/category";
-import { Company, CompanyName } from "../domain/company";
+import { Article, Articles, PublishDate } from "../domain/article";
+import { Company, } from "../domain/company";
 import { ArticlePort } from "../port/articlePort";
 
 type ArticleEntity = {
-    title: String,
+    title: string,
     publishDate: Date,
-    companyName: String,
-    url: String,
+    companyName: string,
+    url: string,
     category: CategoryEntity[],
 }
 
 type CategoryEntity = {
-    id: String,
-    name: String,
+    id: string,
+    name: string,
 }
 
 @Injectable()
@@ -27,19 +26,17 @@ export class ArticleDriver extends ArticlePort {
             .slice(startIndex, startIndex + count))
     }
 
-    fetchBy(categoryId: CategoryId): Articles {
-        const articleEntities = this.articles.filter(a => a.category.some(c => c.id == categoryId.value))
+    fetchBy(categoryId: string): Articles {
+        const articleEntities = this.articles.filter(a => a.category.some(c => c.id == categoryId))
         return new Articles(articleEntities.map(a => this.toArticle(a)))
     }
 
     private toArticle(articleEntity: ArticleEntity): Article {
         return new Article(
-            new Title(articleEntity.title),
+            articleEntity.title,
             new PublishDate(articleEntity.publishDate),
-            new Company(
-                new CompanyName(articleEntity.companyName),
-            ),
-            new URL(articleEntity.url)
+            new Company(articleEntity.companyName),
+            articleEntity.url,
         )
     }
 

@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import { Categories, Category, CategoryId, CategoryName } from "../domain/category";
+import { Categories, Category, } from "../domain/category";
 import { CategoryPort } from "../port/categoryPort";
 
 type CategoryEntity = {
-    id: String,
-    name: String,
+    id: string,
+    name: string,
 }
 
 @Injectable()
@@ -46,9 +46,7 @@ export class CategoryDriver extends CategoryPort {
             { id: "bert", name: "BERT" },
             { id: "rlang", name: "R" },
         ]
-        return new Categories(categories.map(c => new Category(
-            new CategoryId(c.id),
-            new CategoryName(c.name))))
+        return new Categories(categories.map(c => new Category(c.id, c.name)))
     }
 
 }

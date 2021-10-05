@@ -6,16 +6,9 @@ export class Companies {
 }
 
 export class Company {
-    name: CompanyName
-    constructor(name: CompanyName) {
+    name: string
+    constructor(name: string) {
         this.name = name
-    }
-}
-
-export class CompanyName {
-    value: String
-    constructor(value: String) {
-        this.value = value;
     }
 }
 
@@ -27,9 +20,9 @@ export class AggregatedCompanies {
 }
 
 export class AggregatedCompany {
-    companyName: String
-    articleCount: Number
-    constructor(companyName: String, articleCount: Number) {
+    companyName: string
+    articleCount: number
+    constructor(companyName: string, articleCount: number) {
         this.companyName = companyName
         this.articleCount = articleCount
     }

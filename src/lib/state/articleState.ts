@@ -1,19 +1,19 @@
 import { Injectable } from "@angular/core"
 
 export type Article = {
-    title: String,
-    publishDate: String,
+    title: string,
+    publishDate: string,
     company: Company,
-    url: String,
+    url: string,
 }
 
 export type Company = {
-    name: String,
+    name: string,
 }
 
 export type AggregatedCompany = {
-    name: String,
-    count: Number,
+    name: string,
+    count: number,
 }
 
 @Injectable()
